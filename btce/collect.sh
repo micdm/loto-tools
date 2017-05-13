@@ -6,6 +6,7 @@ for i in `find -L data -name "*.html"`; do
     if [ -f $cache ]; then
         cat $cache
     else
+        (>&2 echo "Parsing $i")
         ./parser.py $i | tee $cache
     fi
 done > data/parsed.data
