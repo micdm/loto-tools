@@ -8,7 +8,8 @@ def get_rounds_from_file(file_name):
     rounds = {}
     for line in open(file_name):
         round = json.loads(line)
-        rounds[round['number']] = round
+        if round['number'] not in rounds or round['start_time'] < rounds[round['number']]['start_time']:
+            rounds[round['number']] = round
     return rounds
 
 
