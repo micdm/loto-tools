@@ -7,11 +7,11 @@ import sys
 
 
 def get_day_of_week(timestamp):
-    return datetime.strptime(timestamp, '%Y-%m-%dT%H:%M:%S').weekday()
+    return datetime.strptime(timestamp, '%Y-%m-%dT%H:%M:%SZ').weekday()
 
 
 def get_time_of_day(timestamp):
-    time = datetime.strptime(timestamp, '%Y-%m-%dT%H:%M:%S')
+    time = datetime.strptime(timestamp, '%Y-%m-%dT%H:%M:%SZ')
     return time.hour * 60 + time.minute
 
 

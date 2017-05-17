@@ -30,7 +30,7 @@ for row in tree.xpath('//table[@id="last_periods"]//tr'):
     start_time = datetime.strptime(cells[1].text[:5], "%H:%M").time()
     print(json.dumps({
         'number': cells[0].text,
-        'start_time': str(datetime.combine(today, start_time).replace(tzinfo=timezone(timedelta(hours=4))).astimezone(timezone.utc).strftime('%Y-%m-%dT%H:%M:%S')),
+        'start_time': str(datetime.combine(today, start_time).replace(tzinfo=timezone(timedelta(hours=4))).astimezone(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')),
         'start_price': cells[2].text,
         'end_price': cells[3].xpath('./b')[0].text.translate(table),
         'bets': get_bets(cells[4].text),
