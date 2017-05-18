@@ -9,7 +9,6 @@ from keras.callbacks import ReduceLROnPlateau
 from keras.layers import BatchNormalization, LeakyReLU, Dense, Activation, Dropout
 from keras.models import Sequential
 from keras.optimizers import Nadam
-import matplotlib.pylab as plt
 import numpy as np
 
 
@@ -56,11 +55,13 @@ history = model.fit(X_train, Y_train,
 
 model.save(sys.argv[2])
 
-plt.figure()
-plt.plot(history.history['acc'])
-plt.plot(history.history['val_acc'])
-plt.title('model accuracy')
-plt.ylabel('acc')
-plt.xlabel('epoch')
-plt.legend(['train', 'test'], loc='best')
-plt.show()
+if len(sys.argv) > 3:
+    import matplotlib.pylab as plt
+    plt.figure()
+    plt.plot(history.history['acc'])
+    plt.plot(history.history['val_acc'])
+    plt.title('model accuracy')
+    plt.ylabel('acc')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'test'], loc='best')
+    plt.show()
